@@ -1,627 +1,613 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2026 Melbourne Journey｜墨爾本陽光歷史之旅</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>墨爾本 9天8夜深度互動式行程表 </title>
+    <style>
+        /* 陽光與歷史感視覺風格設計 */
+        :root {
+            --bg-color: #fbf9f4;         /* 暖心復古象牙米 */
+            --primary-color: #1e3a5f;    /* 典雅歷史英倫藍 */
+            --accent-sun: #d97706;       /* 冬日暖陽金黃 */
+            --text-color: #2b2521;       /* 溫和深炭褐 */
+            --card-bg: #ffffff;          /* 純白卡片 */
+            --border-color: #e7dfd3;     /* 細緻羊皮紙色邊框 */
+            --success-color: #15803d;    /* 森林深綠 */
+        }
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.75;
+            font-size: 18px; /* 貼心放大字體，適合長輩閱讀 */
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      margin: 0;
-      font-family: 'Noto Serif TC', serif;
-      background: linear-gradient(to bottom, #f6ecd7 0%, #f9f4ea 45%, #efe2c6 100%);
-      color: #3c2f23;
-      line-height: 1.9;
-      font-size: 20px;
-    }
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0f1e33 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--accent-sun);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
 
-    header {
-      background: linear-gradient(rgba(94, 63, 36, 0.58), rgba(94, 63, 36, 0.68)),
-      url('https://images.unsplash.com/photo-1514395462725-fb4566210144?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
-      color: #fff8ea;
-      padding: 90px 20px;
-      text-align: center;
-      border-bottom: 8px solid #c79b5c;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 58px;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 20px;
+            color: #e2e8f0;
+        }
 
-    header p {
-      font-size: 24px;
-      margin: 10px 0;
-    }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-    .container {
-      width: 92%;
-      max-width: 1250px;
-      margin: 40px auto 80px auto;
-    }
+        .overview-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(43,37,33,0.05);
+        }
 
-    .intro {
-      background: rgba(255, 248, 233, 0.92);
-      border: 3px solid #d7b078;
-      border-radius: 22px;
-      padding: 36px;
-      margin-bottom: 42px;
-      box-shadow: 0 10px 28px rgba(76, 55, 28, 0.12);
-    }
+        .overview-title {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-sun);
+            padding-bottom: 5px;
+        }
 
-    .intro-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-      margin-top: 20px;
-    }
+        details {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 6px rgba(43,37,33,0.03);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
 
-    .intro-card {
-      background: #fffdf7;
-      border-left: 8px solid #d8a25c;
-      padding: 20px;
-      border-radius: 14px;
-    }
+        details[open] {
+            box-shadow: 0 8px 16px rgba(43,37,33,0.08);
+            border-color: var(--accent-sun);
+        }
 
-    .intro-card h3 {
-      margin-top: 0;
-      font-size: 24px;
-      color: #7b4b1e;
-    }
+        summary {
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary-color);
+            cursor: pointer;
+            background-color: #fdfcf9;
+            user-select: none;
+            outline: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .day-card {
-      background: rgba(255,255,255,0.94);
-      border-radius: 26px;
-      overflow: hidden;
-      margin-bottom: 36px;
-      box-shadow: 0 12px 30px rgba(89, 61, 30, 0.14);
-      border: 2px solid rgba(184, 136, 75, 0.28);
-    }
+        summary:hover {
+            background-color: #f7f3eb;
+        }
 
-    .day-header {
-      background: linear-gradient(to right, #b87a39, #d6a25f);
-      color: #fff;
-      padding: 24px 30px;
-    }
+        summary::after {
+            content: "▼";
+            font-size: 16px;
+            color: var(--accent-sun);
+            transition: transform 0.3s;
+        }
 
-    .day-header h2 {
-      margin: 0;
-      font-size: 36px;
-      font-family: 'Playfair Display', serif;
-    }
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
 
-    .day-header p {
-      margin: 8px 0 0 0;
-      font-size: 22px;
-    }
+        .day-content {
+            padding: 25px;
+            border-top: 1px solid var(--border-color);
+            background-color: #ffffff;
+        }
 
-    .timeline {
-      padding: 28px;
-    }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--border-color);
+            margin-bottom: 30px;
+        }
 
-    .event {
-      display: flex;
-      gap: 24px;
-      margin-bottom: 28px;
-      padding-bottom: 24px;
-      border-bottom: 1px dashed #d5b487;
-    }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            border-left: 3px solid transparent;
+        }
 
-    .event:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent-sun);
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--accent-sun);
+        }
 
-    .time {
-      min-width: 170px;
-      font-weight: 700;
-      color: #8b4d14;
-      font-size: 22px;
-    }
+        .time-badge {
+            font-weight: 700;
+            color: var(--accent-sun);
+            font-size: 19px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
 
-    .details {
-      flex: 1;
-    }
+        .spot-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+        }
 
-    .details h3 {
-      margin: 0 0 10px 0;
-      font-size: 28px;
-      color: #4a2f16;
-    }
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-left: 10px;
+            border: 1px solid #cbd5e1;
+            transition: all 0.2s;
+        }
 
-    .location {
-      margin-top: 10px;
-      color: #65452a;
-      font-size: 19px;
-    }
+        .map-link:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border-color: var(--primary-color);
+        }
 
-    a.map-link {
-      display: inline-block;
-      margin-top: 14px;
-      background: #c98b42;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 999px;
-      font-size: 18px;
-      transition: 0.25s ease;
-      font-weight: 700;
-    }
+        .route-box {
+            background-color: #fdfbf7;
+            border: 1px dashed var(--accent-sun);
+            padding: 12px 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-size: 17px;
+        }
 
-    a.map-link:hover {
-      background: #9f6727;
-      transform: translateY(-2px);
-    }
+        .meta-info {
+            font-size: 16px;
+            color: #554d46;
+            margin: 8px 0;
+            background-color: #f8fafc;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 50px 20px 70px;
-      color: #6a4d2f;
-      font-size: 18px;
-    }
+        .tip-box {
+            background-color: #fffbeb;
+            border-left: 5px solid #f59e0b;
+            padding: 12px 18px;
+            margin-top: 10px;
+            border-radius: 0 8px 8px 0;
+            font-size: 17px;
+        }
 
-    .badge {
-      display: inline-block;
-      background: #f0d7af;
-      color: #7d4f1f;
-      border-radius: 999px;
-      padding: 6px 14px;
-      margin-top: 10px;
-      font-size: 16px;
-      font-weight: 700;
-    }
+        .checklist {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
 
-    @media (max-width: 768px) {
-      body {
-        font-size: 18px;
-      }
+        .checklist h4 {
+            margin-top: 0;
+            color: var(--success-color);
+            font-size: 18px;
+        }
 
-      header h1 {
-        font-size: 42px;
-      }
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
 
-      .event {
-        flex-direction: column;
-        gap: 10px;
-      }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
 
-      .time {
-        min-width: auto;
-      }
+        .checklist-item input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
 
-      .details h3 {
-        font-size: 24px;
-      }
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #1e293b;
+            color: #cbd5e1;
+            font-size: 16px;
+            border-top: 4px solid var(--accent-sun);
+        }
+
+        @media (max-width: 600px) {
+            body { font-size: 17px; }
+            header h1 { font-size: 26px; }
+            summary { font-size: 19px; }
+            .map-link { display: block; margin-left: 0; margin-top: 10px; text-align: center; }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Melbourne Journey 2026</h1>
-    <p>墨爾本・陽光與歷史交織的慢旅行</p>
-    <p>2026/06/06 — 2026/06/14</p>
-    <div class="badge">Senior Friendly ｜ Relaxed Pace ｜ Classic Heritage Style</div>
-  </header>
+    <header>
+        <h1>墨爾本冬日暖陽．經典藝文深度 9日遊</h1>
+        <p>旅人：長輩同行 3 人組 (慢節奏已優化行程)</p>
+    </header>
 
-  <div class="container">
+    <div class="container">
 
-    <section class="intro">
-      <h2 style="font-size:40px; margin-top:0; color:#6e4215;">旅程資訊總覽</h2>
-
-      <div class="intro-grid">
-        <div class="intro-card">
-          <h3>目的地</h3>
-          <p>澳洲・墨爾本 Melbourne</p>
+        <!-- 總覽資訊 -->
+        <div class="overview-card">
+            <h3 class="overview-title">🗺️ 旅程核心摘要</h3>
+            <p><strong>📅 旅行時間：</strong>2026/06/06 ～ 2026/06/14 (澳洲冬季)</p>
+            <p><strong>🚃 交通策略：</strong>市區全程利用「免費電車特區 (Free Tram Zone)」；近郊火車/大洋路一日遊採用保姆車接送；最後一天貼心安排頂級意式早午餐與輕鬆血拼，隨後專車直達機場。</p>
         </div>
 
-        <div class="intro-card">
-          <h3>旅遊成員</h3>
-          <p>2 位約 60 歲長輩＋1 位 30 歲成人</p>
-        </div>
+        <!-- Day 1 -->
+        <details>
+            <summary><span>D1 | 06.06 (六) 台北啟航：奔向南半球冬日假期</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">21:30</span>
+                    <div class="spot-name">桃園國際機場第二航廈 </div>
+                    <div class="meta-info">📍 華航 CI027 航班 | 預計 23:30 起飛直飛墨爾本</div>
+                    <p>請協助長輩將厚大衣備於隨身行李，機上平躺多休息，準備迎接美好的冬日假期。</p>
+                </div>
+            </div>
+        </details>
 
-        <div class="intro-card">
-          <h3>旅行風格</h3>
-          <p>慢步調、舒適、適合長輩</p>
-        </div>
+        <!-- Day 2 -->
+        <details>
+            <summary><span>D2 | 06.07 (日) 抵達墨爾本：古蹟飯店安頓與舒緩散步</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">10:40</span>
+                    <div class="spot-name">墨爾本國際機場 (MEL) 第二航廈<a href="https://www.google.com/maps/search/?api=1&query=-37.6690,144.8410" target="_blank" class="map-link">🌐 地圖導航</a></div>
+                    <p>順利出關。搭乘 SkyBus 直達市區南十字星車站，轉乘路面電車前進飯店。</p>
+                </div>
 
-        <div class="intro-card">
-          <h3>總預算</h3>
-          <p>約 NTD 300,000</p>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">12:45</span>
+                    <div class="spot-name">下榻飯店：Treasury on Collins Hotel<a href="https://www.google.com/maps/search/?api=1&query=-37.8166,144.9616" target="_blank" class="map-link">🌐 地圖導航</a></div>
+                    <p>抵達英倫歷史感濃郁的精品飯店寄放行李，大廳全天備有熱茶與咖啡暖身。</p>
+                </div>
 
-        <div class="intro-card">
-          <h3>住宿飯店</h3>
-          <p><strong>Treasury on Collins Hotel</strong><br>
-          394 Collins St, Melbourne VIC 3000</p>
-          <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Treasury+on+Collins+Hotel+Melbourne">查看 Google 地圖</a>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">13:15</span>
+                    <div class="spot-name">午餐：小籠館 Shanghai Street<a href="https://www.google.com/maps/search/?api=1&query=-37.8124,144.9658" target="_blank" class="map-link">🌐 地圖導航</a></div>
+                    <p>享用熱騰騰的現包小籠包與熱熱的中式湯品，體貼長輩長途飛行的腸胃。</p>
+                </div>
 
-        <div class="intro-card">
-          <h3>住宿天數</h3>
-          <p>共入住 7 晚</p>
-        </div>
-      </div>
-    </section>
+                <div class="timeline-item">
+                    <span class="time-badge">14:45</span>
+                    <div class="spot-name">飯店全面休息充電 💤</div>
+                    <p>正式辦理入住。強烈建議讓長輩平躺小憩 2 小時，無縫調好時差。</p>
+                </div>
+            </div>
+        </details>
 
-    <!-- Day 1 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 1 ｜ 06/06 Sat</h2>
-        <p>台北出發・啟程飛往墨爾本</p>
-      </div>
+        <!-- Day 3 -->
+        <details open>
+            <summary><span>D3 | 06.08 (一) 復古英倫風：百年拱廊、塗鴉藝術與頂級熟成牛排</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">09:30</span>
+                    <div class="spot-name">弗林德斯街車站 & 聖保羅大教堂<a href="https://www.google.com/maps/search/?api=1&query=-37.8183,144.9671" target="_blank" class="map-link">🌐 車站地圖</a></div>
+                    <div class="meta-info">📍 大教堂開放時間：08:00 - 18:00 (免費參觀)</div>
+                    <p>欣賞經典金黃色地標車站，過馬路參觀宏偉的聖保羅大教堂，感受彩繪玻璃的寧靜美感。</p>
+                </div>
 
-      <div class="timeline">
-        <div class="event">
-          <div class="time">23:30</div>
-          <div class="details">
-            <h3>中華航空 CI027 飛往 Melbourne</h3>
-            <div class="location">Taoyuan International Airport Terminal 2</div>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Taoyuan+International+Airport+Terminal+2">開啟 Google 地圖</a>
-          </div>
-        </div>
-      </div>
-    </section>
+                <div class="route-box">
+                    🚶 步行：從大教堂側門過馬路即達，步行僅 2 分鐘 (150公尺)。
+                </div>
 
-    <!-- Day 2 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 2 ｜ 06/07 Sun</h2>
-        <p>抵達墨爾本・輕鬆適應時差</p>
-      </div>
+                <div class="timeline-item">
+                    <span class="time-badge">10:15</span>
+                    <div class="spot-name">霍西爾巷 Hosier Lane 塗鴉牆 🎨 <a href="https://www.google.com/maps/search/?api=1&query=-37.8163,144.9692" target="_blank" class="map-link">🌐 塗鴉巷地圖</a></div>
+                    <p>這裡是墨爾本最具生命力的街頭視覺藝術巷弄，地面平坦好走，極適合幫長輩拍出色彩繽紛、充滿張力的時尚大片！</p>
+                </div>
 
-      <div class="timeline">
-        <div class="event">
-          <div class="time">10:40</div>
-          <div class="details">
-            <h3>抵達 Melbourne Airport (MEL T2)</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.6690,144.8410">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="route-box">
+                    🚶 步行：跨越亞拉河大橋向南散步約 10 分鐘，即可抵達美術館。
+                </div>
 
-        <div class="event">
-          <div class="time">13:15 - 14:30</div>
-          <div class="details">
-            <h3>Shanghai Street Dumplings 午餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8124,144.9658">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">11:00</span>
+                    <div class="spot-name">維多利亞國家美術館 (NGV International)<a href="https://www.google.com/maps/search/?api=1&query=-37.8226,144.9689" target="_blank" class="map-link">🌐 NGV地圖</a></div>
+                    <p>進門欣賞壯麗的水幕牆與全球最大的彩色玻璃天頂。館內動線平緩且遍布舒適沙發，非常適合長輩隨心歇腳。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">14:45 - 17:00</div>
-          <div class="details">
-            <h3>飯店 Check-in ＆ 長輩休息時間</h3>
-            <div class="location">Treasury on Collins Hotel</div>
-          </div>
-        </div>
-      </div>
-    </section>
+                <div class="timeline-item">
+                    <span class="time-badge">13:30</span>
+                    <div class="spot-name">百年拱廊下午茶：The Tea Rooms 1892<a href="https://www.google.com/maps/search/?api=1&query=-37.8157,144.9635" target="_blank" class="map-link">🌐 街區拱廊地圖</a></div>
+                    <p>前往「街區拱廊 Block Arcade」，在 1892 年開業的傳奇老店享用優雅的英式司康下午茶。隨後順道繞至隔壁的「皇家拱廊 Royal Arcade」觀賞巨型機械時鐘。</p>
+                </div>
 
-    <!-- Day 3 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 3 ｜ 06/08 Mon</h2>
-        <p>經典墨爾本文化與歷史巡禮</p>
-      </div>
+                <div class="timeline-item">
+                    <span class="time-badge">15:40</span>
+                    <div class="spot-name">35號復古城市環線電車 (City Circle Tram)<a href="https://www.google.com/maps/search/?api=1&query=-37.8183,144.9671" target="_blank" class="map-link">🌐 電車資訊</a></div>
+                    <p>登上純免費的 35 號復古紅色電車。長輩能坐在富有歷史感的木製車廂內，輕鬆車覽繞行墨爾本中央商務區一圈，完全免除步行的疲勞。</p>
+                </div>
 
-      <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time-badge">18:15</span>
+                    <div class="spot-name">晚餐（已預約）：The Meat & Wine Co <a href="https://www.google.com/maps/search/?api=1&query=-37.8208,144.9619" target="_blank" class="map-link">🌐 餐廳地圖</a></div>
+                    <p>享用頂級的非洲風味乾式熟成牛排（建議幫長輩點選熟度較溫和的中熟 Medium）。一邊用餐，窗外即是流金璀璨的亞拉河畔夜景。</p>
+                </div>
+            </div>
+        </details>
 
-        <div class="event">
-          <div class="time">09:30 - 10:15</div>
-          <div class="details">
-            <h3>Flinders Street Station ＆ St Paul's Cathedral</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8183,144.9671">開啟 Google 地圖</a>
-          </div>
-        </div>
+        <!-- Day 4 -->
+        <details>
+            <summary><span>D4 | 06.09 (二) 自然奇景：大洋路「逆向精華」一日遊</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">07:30</span>
+                    <div class="spot-name">飯店大門出發 🚐</div>
+                    <p>專車小團準時出發。清晨 10:30 率先抵達大洋路終點【十二門徒石】，此時陽光順光灑在巨石上最美，且完全避開下午數千人的遊覽車人潮！</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">10:30</span>
+                    <div class="spot-name">十二門徒石 (12 Apostles) & 洛克阿德峽谷<a href="https://www.google.com/maps/search/?api=1&query=-38.6655,143.1042" target="_blank" class="map-link">🌐 十二門徒地圖</a></div>
+                    <p>親眼目睹大自然奇蹟，步道皆為無障礙木棧道，行走極度輕鬆舒適。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">13:15</span>
+                    <div class="spot-name">阿波羅灣 (Apollo Bay) 海鮮午餐<a href="https://www.google.com/maps/search/?api=1&query=-38.7561,143.6667" target="_blank" class="map-link">🌐 阿波羅灣地圖</a></div>
+                    <p>在陽光海濱小鎮停靠，享用當地著名的干貝派（Scallop Pie）與新鮮炸魚薯條。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">15:30</span>
+                    <div class="spot-name">肯耐特河尋找野生無尾熊 (Kennett River)<a href="https://www.google.com/maps/search/?api=1&query=-38.6694,143.8653" target="_blank" class="map-link">🌐 無尾熊觀賞點</a></div>
+                    <p>散步於尤加利樹林中，抬頭就能尋找野生考拉（無尾熊），還能近距離觀賞繽紛的澳洲國王鸚鵡。</p>
+                </div>
+            </div>
+        </details>
 
-        <div class="event">
-          <div class="time">10:30 - 12:30</div>
-          <div class="details">
-            <h3>National Gallery of Victoria (NGV)</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8226,144.9689">開啟 Google 地圖</a>
-          </div>
-        </div>
+        <!-- Day 5 (已優化：調整午餐與飯店放鬆) -->
+        <details open>
+            <summary><span>D5 | 06.10 (三) 侏儸紀森林火車、神級咖啡與微醺飯店時光</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">07:40</span>
+                    <div class="spot-name">接駁專車集合點：InterContinental Melbourne<a href="https://www.google.com/maps/search/?api=1&query=-37.8174,144.9602" target="_blank" class="map-link">🌐 集合點地圖</a></div>
+                    <p>步行僅 130 公尺（隔壁酒店門口），長輩不需奔波即可登車前進丹頓農山脈。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">13:00 - 15:00</div>
-          <div class="details">
-            <h3>The Tea Rooms 1892 英式下午茶</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8157,144.9635">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">09:00 - 12:00</span>
+                    <div class="spot-name">普芬比利蒸汽火車體驗 (Puffing Billy)<a href="https://www.google.com/maps/search/?api=1&query=-37.9171,145.3551" target="_blank" class="map-link">🌐 蒸汽火車站</a></div>
+                    <p>搭乘澳洲最古老的蒸汽火車。伴隨蒸汽汽笛聲穿梭於高聳的尤加利樹林與巨型蕨類峽谷，安全、復古又好玩。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">15:30 - 16:45</div>
-          <div class="details">
-            <h3>City Circle Tram 35 懷舊觀光電車</h3>
-            <div class="location">Free Tram Zone</div>
-          </div>
-        </div>
+                <div class="route-box">
+                    🚐 專車接駁：專車送回墨爾本市區 CBD，約於 13:30 左右抵達。
+                </div>
 
-        <div class="event">
-          <div class="time">18:15</div>
-          <div class="details">
-            <h3>The Meat & Wine Co Southbank 晚餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8208,144.9619">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">13:45</span>
+                    <div class="spot-name">午餐：Brother Baba Budan 奇幻椅子咖啡名店 (行程調整點)<a href="https://www.google.com/maps/search/?api=1&query=-37.8130,144.9634" target="_blank" class="map-link">🌐 咖啡店地圖</a></div>
+                    <p>帶長輩朝聖天花板掛滿椅子的超現實魔幻空間！這家是墨爾本當地的極品咖啡代表，外帶香醇的 Flat White，再搭配店內現烤的優質三明治與輕食堡，作為美味精緻的午餐。</p>
+                </div>
 
-      </div>
-    </section>
+                <div class="route-box">
+                    🚶 步行：悠閒向南散步約 5 分鐘 (400公尺) 即可回到 Treasury on Collins 飯店。
+                </div>
 
-    <!-- Day 4 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 4 ｜ 06/09 Tue</h2>
-        <p>Reverse Great Ocean Road 壯麗海岸之旅</p>
-      </div>
+                <div class="timeline-item">
+                    <span class="time-badge">15:00 - 20:30</span>
+                    <div class="spot-name">微醺放鬆時光：Wine down at hotel 🍷 (行程調整點)</div>
+                    <p>【全新優化】回到 Treasury on Collins 飯店。本日下午不安排任何奔波景點，讓長輩在飯店歷史感濃郁的典雅大廳或交誼廳中徹底放鬆。您可以開一瓶當地亞拉 Valley 的極品葡萄酒、享用一些起司小點。在慢節奏的微醺氛圍中聊聊天、歇歇腳，享受不被行程追著跑的真正奢華度假感！</p>
+                </div>
+            </div>
+        </details>
 
-      <div class="timeline">
+        <!-- Day 6 -->
+        <details>
+            <summary><span>D6 | 06.11 (四) 在地市井與穹頂殿堂：古蹟市場與名廚晚宴</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">08:30</span>
+                    <div class="spot-name">外帶頂級手沖：Patricia Coffee Brewers<a href="https://www.google.com/maps/search/?api=1&query=-37.8152,144.9593" target="_blank" class="map-link">🌐 咖啡店地圖</a></div>
+                    <p>造訪墨爾本第一的手沖名店，外帶咖啡至一旁乾淨的法院廣場長椅上，像在地人一樣享受晨光。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">09:30</span>
+                    <div class="spot-name">維多利亞女王市場 (Queen Victoria Market)<a href="https://www.google.com/maps/search/?api=1&query=-37.8076,144.9568" target="_blank" class="map-link">🌐 女王市場地圖</a></div>
+                    <p>帶長輩在乾淨的熟食內廳（Deli Hall）品嚐現開新鮮生蠔（極便宜肥美），買一些無籽葡萄、頂級起司，體驗最地道的墨爾本日常生活。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">12:00</span>
+                    <div class="spot-name">午餐：Operator 25 文青造紙廠早午餐<a href="https://www.google.com/maps/search/?api=1&query=-37.8094,144.9587" target="_blank" class="map-link">🌐 餐廳地圖</a></div>
+                    <p>由 19 世紀老造紙廠改建，餐點完美融合日意西式元素，非常符合亞洲人的胃口。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">13:45</span>
+                    <div class="spot-name">維多利亞州立圖書館 & 卡爾頓花園<a href="https://www.google.com/maps/search/?api=1&query=-37.8098,144.9652" target="_blank" class="map-link">🌐 圖書館地圖</a></div>
+                    <p>自六樓鳥瞰極具震撼力的放射狀 La Trobe 閱覽室。隨後散步至相鄰的卡爾頓花園，平坦好走。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">18:00</span>
+                    <div class="spot-name">晚餐（已預約）：Supernormal 當代亞洲融合料理<a href="https://www.google.com/maps/search/?api=1&query=-37.8149,144.9695" target="_blank" class="map-link">🌐 餐廳地圖</a></div>
+                    <p>傳奇名廚Andrew McConnell的指標店。必點招牌「新英格蘭龍蝦堡 (Lobster Roll)」、炙燒和牛，將亞洲元素用頂級法式技法呈現。</p>
+                </div>
+            </div>
+        </details>
 
-        <div class="event">
-          <div class="time">10:30</div>
-          <div class="details">
-            <h3>12 Apostles Viewpoint</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-38.6655,143.1042">開啟 Google 地圖</a>
-          </div>
-        </div>
+        <!-- Day 7 -->
+        <details open>
+            <summary><span>D7 | 06.12 (五) 戰爭紀念館露台、歐風花園晚餐與冬季限定 Lightscape 特展</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">08:30</span>
+                    <div class="spot-name">發電廠視覺系早午餐：Higher Ground<a href="https://www.google.com/maps/search/?api=1&query=-37.8156,144.9531" target="_blank" class="map-link">🌐 餐廳地圖</a></div>
+                    <p>挑高三層樓的舊發電廠改建。必點極具視覺震撼力的「招牌 Ricotta 厚鬆餅」，外酥內軟，鋪滿食用花卉與楓糖漿。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">13:15</div>
-          <div class="details">
-            <h3>Apollo Bay 海鮮午餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-38.7561,143.6667">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="route-box">
+                    🚃 電車：搭乘路面電車往南跨越亞拉河，直達墨爾本戰爭紀念館，約 15 分鐘。
+                </div>
 
-        <div class="event">
-          <div class="time">15:30</div>
-          <div class="details">
-            <h3>Kennett River 野生無尾熊觀察</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-38.6694,143.8653">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">10:45</span>
+                    <div class="spot-name">墨爾本戰爭紀念館（直達頂樓觀景台）<a href="https://www.google.com/maps/search/?api=1&query=-37.8304,144.9734" target="_blank" class="map-link">🌐 戰爭紀念館地圖</a></div>
+                    <p>古典希臘神殿風格建築。館內設有平穩電梯，**務必帶長輩直達頂樓露台**。這裡可以毫无遮蔽地沿著墨爾本中軸線一路向北眺望整座城市的摩天大樓天際線，是墨爾本最棒的視覺盛宴。</p>
+                </div>
 
-      </div>
-    </section>
+                <div class="timeline-item">
+                    <span class="time-badge">13:00 - 15:00</span>
+                    <div class="spot-name">墨爾本皇家植物園綠意漫步<a href="https://www.google.com/maps/search/?api=1&query=-37.8304,144.9804" target="_blank" class="map-link">🌐 皇家植物園地圖</a></div>
+                    <p>呼吸午後芬多精，在平坦無障礙的植物園湖畔散步，欣賞冬季蒼勁的古樹之美。</p>
+                </div>
 
-    <!-- Day 5 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 5 ｜ 06/10 Wed</h2>
-        <p>Puffing Billy 蒸汽火車自然日</p>
-      </div>
+                <div class="timeline-item">
+                    <span class="time-badge">15:15 - 16:45</span>
+                    <div class="spot-name">🚨 戰略性回防飯店加衣服、歇歇腳（重要）</div>
+                    <p>由於夜間要在低溫戶外步行，下午必須搭電車回飯店休息、平躺。讓長輩換上最厚防風大衣、毛帽、手套並帶上暖暖包，做好萬全保暖。</p>
+                </div>
 
-      <div class="timeline">
+                <div class="route-box">
+                    🚖 交通：建議直接從飯店門口叫 Uber 輕鬆前往皇家植物園入口，約 10 分鐘。
+                </div>
 
-        <div class="event">
-          <div class="time">07:40</div>
-          <div class="details">
-            <h3>InterContinental Melbourne 集合</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8174,144.9602">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">17:30</span>
+                    <div class="spot-name">晚餐（已預訂）：The Observatory <a href="https://www.google.com/maps/search/?api=1&query=-37.8285,144.9744" target="_blank" class="map-link">🌐 餐廳地圖</a></div>
+                    <p>【時間精準對接】位於皇家植物園入口的指標性歐風玻璃屋餐廳。在溫馨溫暖的室內，一邊隔著玻璃欣賞傍晚的花園，一邊享用熱騰騰的拿坡里窯烤披薩、時令燉菜與熱飲，為晚間的燈光特展儲備熱量。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">09:00 - 12:00</div>
-          <div class="details">
-            <h3>Puffing Billy Steam Train Ride</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.9171,145.3551">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">19:15</span>
+                    <div class="spot-name">魔幻視覺盛宴：Lightscape Trail <a href="https://www.google.com/maps/search/?api=1&query=-37.8285,144.9744" target="_blank" class="map-link">🌐 特展入口</a></div>
+                    <p>【時間精準對接】2026年年度盛大開幕首日夜！吃飽喝足後，直接從餐廳漫步進入特展步道。整座植物園化身為光影霓虹世界，漫步在長達數公里的發光巨型隧道、發光菌菇與交響樂音效中，步道平坦，浪漫且極具震撼力！</p>
+                </div>
+            </div>
+        </details>
 
-        <div class="event">
-          <div class="time">18:00</div>
-          <div class="details">
-            <h3>Mamasita Contemporary Mexican 晚餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8136,144.9715">開啟 Google 地圖</a>
-          </div>
-        </div>
+        <!-- Day 8 -->
+        <details>
+            <summary><span>D8 | 06.13 (六) 世界級可頌與生活感市集：生蠔掃街與河畔噴火秀</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">08:30</span>
+                    <div class="spot-name">費茲羅花園室內溫室 & 庫克船長小屋<a href="https://www.google.com/maps/search/?api=1&query=-37.8133,144.9810" target="_blank" class="map-link">🌐 室內溫室地圖</a></div>
+                    <p>參觀西班牙風格的「室內溫室 Conservatory」，欣賞冬季盛開的熱帶花卉，室內溫度調節得非常溫暖舒適，適合長輩慢步。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">10:00</span>
+                    <div class="spot-name">神級美味朝盛：Lune Croissanterie Fitzroy<a href="https://www.google.com/maps/search/?api=1&query=-37.8015,144.9795" target="_blank" class="map-link">🌐 Lune可頌總店地圖</a></div>
+                    <p>朝聖被《紐約時報》譽為「世界最好吃可頌」的總店。在太空實驗室風格的廚房外，品嚐剛出爐、酥脆到不可思議的經典原味與杏仁可頌。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">11:30 - 14:00</span>
+                    <div class="spot-name">午餐（生活感體驗）：南墨爾本市場海鮮大狂歡<a href="https://www.google.com/maps/search/?api=1&query=-37.8324,144.9568" target="_blank" class="map-link">🌐 南墨爾本市場地圖</a></div>
+                    <p>週末最熱鬧的生活市場！直奔 *Aptus Seafoods* 攤位，品嚐現點現開、無污染的澳洲頂級塔斯馬尼亞生蠔，配上新鮮檸檬現吃，極度鮮美！</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="time-badge">18:00</span>
+                    <div class="spot-name">最後一晚慶典：皇冠賭場娛樂中心 & 亞拉河畔巨型噴火秀<a href="https://www.google.com/maps/search/?api=1&query=-37.8222,144.9588" target="_blank" class="map-link">🌐 皇冠賭場地圖</a></div>
+                    <p>晚上整點（如 20:00）務必帶長輩步出賭場戶外河畔步道，觀賞震撼感十足、火光沖天照亮整座夜空的「**皇家賭場巨型噴火秀**」，為旅程留下燦爛回憶。</p>
+                </div>
+            </div>
+        </details>
 
-      </div>
-    </section>
+        <!-- Day 9 -->
+        <details open>
+            <summary><span>D9 | 06.14 (日) 義式奢華早午餐、伴手禮最後大採購與平安賦歸</span></summary>
+            <div class="day-content">
+                <div class="timeline-item">
+                    <span class="time-badge">09:00</span>
+                    <div class="spot-name">飯店輕鬆辦理退房 🏨</div>
+                    <p>辦理 Check-out，行李安全免費寄存在飯店櫃檯，兩袖清風出門進行最後一日的城市漫遊。</p>
+                </div>
 
-    <!-- Day 6 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 6 ｜ 06/11 Thu</h2>
-        <p>市場、美食與圖書館探索</p>
-      </div>
+                <div class="route-box">
+                    🚶 步行：從飯店向東輕鬆步行約 6 分鐘 (450公尺) 即可抵達。
+                </div>
 
-      <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time-badge">10:00 - 11:30</span>
+                    <div class="spot-name">時光倒流的奢華早午餐：Brunetti Oro (Flinders Lane) (全新安排點)<a href="https://www.google.com/maps/search/?api=1&query=-37.8164,144.9664" target="_blank" class="map-link">🌐 Brunetti地圖</a></div>
+                    <p>【全新精心設計】替代原本已移出的行程。帶長輩走進這家充滿意式歷史奢華感、如同宮殿般華麗的墨爾本殿堂級咖啡廳。這裡的空間寬敞、字體大且沙發座位極度舒適。點一盤剛出爐的義式開心果可頌、精緻奢華的法式鹹派，再搭配一杯極致完美的卡布奇諾，讓長輩優雅、暖和地開啟最後一天。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">08:30</div>
-          <div class="details">
-            <h3>Patricia Coffee Brewers 咖啡時光</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8152,144.9593">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="route-box">
+                    🚶 步行：步行 3 分鐘即可抵達 Bourke Street 購物大道。
+                </div>
 
-        <div class="event">
-          <div class="time">09:30 - 11:40</div>
-          <div class="details">
-            <h3>Queen Victoria Market 市集漫遊</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8076,144.9568">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">11:45 - 14:30</span>
+                    <div class="spot-name">伴手禮最後大補貨：布克街大道 (Bourke Street Mall) & Emporium<a href="https://www.google.com/maps/search/?api=1&query=-37.8136,144.9650" target="_blank" class="map-link">🌐 購物大道地圖</a></div>
+                    <p>進行最後的採購。在 Chemist Warehouse 藥局購買澳洲木瓜霜、優質維他命與綿羊油；前往大型商場 Emporium 採購澳洲頂級巧克力名店 **Koko Black** 的松露巧克力與精美包裝茶葉送禮。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">12:00 - 13:30</div>
-          <div class="details">
-            <h3>Operator 25 午餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8094,144.9587">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="route-box">
+                    🚃 電車/步行：搭乘免費電車前往亞拉河畔，約 8 分鐘。
+                </div>
 
-        <div class="event">
-          <div class="time">14:00 - 14:45</div>
-          <div class="details">
-            <h3>State Library of Victoria 圓頂景觀</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8098,144.9652">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">14:45 - 16:30</span>
+                    <div class="spot-name">亞拉河畔悠閒午後：Riverland Bar 暖爐看海鷗 (全新安排點)</div>
+                    <p>【全新精心設計】在回飯店拿行李前，帶長輩來到聯邦廣場下方的亞拉河畔景觀露天吧。冬季這裡有非常暖和的巨型戶外暖爐，長輩可以坐在熱源旁，一邊喝著溫熱的伯爵茶或拿鐵，一邊看著亞拉河上的黑天鵝與遊船，極致放鬆，享受旅行最後的寧靜午後。</p>
+                </div>
 
-        <div class="event">
-          <div class="time">18:00</div>
-          <div class="details">
-            <h3>Supernormal Contemporary Asian 晚餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8149,144.9695">開啟 Google 地圖</a>
-          </div>
-        </div>
+                <div class="timeline-item">
+                    <span class="time-badge">17:00</span>
+                    <div class="spot-name">返回飯店提領行李 🧳</div>
+                    <p>散步回 Treasury on Collins 飯店，上個洗手間並提領早晨寄存的行李。</p>
+                </div>
 
-      </div>
-    </section>
+                <div class="timeline-item">
+                    <span class="time-badge">17:45</span>
+                    <div class="spot-name">🚨 終極體貼：專車直達機場 🚖</div>
+                    <p>考慮到大包小包戰利品與長輩體力，**完全不折騰大眾運輸**，直接在飯店門口搭乘使用 Uber 或 DiDi APP 預約的高頂大車（Maxi 或 SUV）直達墨爾本機場，車程 30 分鐘，優雅又舒適。</p>
+                </div>
 
-    <!-- Day 7 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 7 ｜ 06/12 Fri</h2>
-        <p>城市天際線與 Lightscape 夜間燈光秀</p>
-      </div>
+                <div class="timeline-item">
+                    <span class="time-badge">21:50</span>
+                    <div class="spot-name">墨爾本國際機場第二航廈 (MEL T2) ✈️</div>
+                    <p>抵達機場。前往 TRS 櫃檯辦理退稅（過去幾天消費滿 $300 澳幣單據可退還 10% 現金）。搭乘中華航空 CI058 班機起飛返台，次日清晨平安返抵台北桃園，旅程圓滿成功！</p>
+                </div>
+            </div>
+        </details>
 
-      <div class="timeline">
+    </div>
 
-        <div class="event">
-          <div class="time">08:30 - 10:15</div>
-          <div class="details">
-            <h3>Higher Ground 早餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8156,144.9531">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">10:45 - 12:30</div>
-          <div class="details">
-            <h3>Shrine of Remembrance 屋頂景觀</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8304,144.9734">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">12:45</div>
-          <div class="details">
-            <h3>The Observatory Cafe 午餐</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8285,144.9744">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">17:30 - 19:30</div>
-          <div class="details">
-            <h3>Lightscape 2026 沉浸式燈光展</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8285,144.9744">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Day 8 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 8 ｜ 06/13 Sat</h2>
-        <p>花園散步、世界級可頌與海鮮市集</p>
-      </div>
-
-      <div class="timeline">
-
-        <div class="event">
-          <div class="time">08:30 - 09:40</div>
-          <div class="details">
-            <h3>Fitzroy Gardens Conservatory ＆ Cook's Cottage</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8133,144.9810">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">10:00 - 11:00</div>
-          <div class="details">
-            <h3>Lune Croissanterie Fitzroy</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8015,144.9795">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">11:30 - 14:00</div>
-          <div class="details">
-            <h3>South Melbourne Market 海鮮巡禮</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8324,144.9568">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">18:00</div>
-          <div class="details">
-            <h3>Crown Casino Complex ＆ 河岸夜景</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8222,144.9588">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Day 9 -->
-    <section class="day-card">
-      <div class="day-header">
-        <h2>Day 9 ｜ 06/14 Sun</h2>
-        <p>伴手禮採購與返程回台</p>
-      </div>
-
-      <div class="timeline">
-
-        <div class="event">
-          <div class="time">10:15 - 12:30</div>
-          <div class="details">
-            <h3>Bourke Street Mall 購物時光</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8136,144.9650">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">13:45 - 14:45</div>
-          <div class="details">
-            <h3>Hosier Lane 塗鴉藝術散步</h3>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8163,144.9692">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">17:45</div>
-          <div class="details">
-            <h3>專車前往 Melbourne Airport</h3>
-            <div class="location">En route to MEL Airport T2</div>
-          </div>
-        </div>
-
-        <div class="event">
-          <div class="time">21:50</div>
-          <div class="details">
-            <h3>中華航空 CI058 返回台北</h3>
-            <div class="location">Melbourne Airport Terminal 2</div>
-            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+Terminal+2">開啟 Google 地圖</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </div>
-
-  <footer>
-    <p>Designed with Sunshine, Heritage & Relaxed Melbourne Elegance ☀️</p>
-    <p>適合長輩的舒適步調旅行設計 ｜ Google Maps 連結皆可直接開啟導航</p>
-  </footer>
+    <footer>
+        <p>© 2026 墨爾本互動行程表 - 您的乖女兒愛您唷!</p>
+    </footer>
 
 </body>
 </html>
