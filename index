@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 Melbourne Journey｜墨爾本陽光歷史之旅</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Serif TC', serif;
+      background: linear-gradient(to bottom, #f6ecd7 0%, #f9f4ea 45%, #efe2c6 100%);
+      color: #3c2f23;
+      line-height: 1.9;
+      font-size: 20px;
+    }
+
+    header {
+      background: linear-gradient(rgba(94, 63, 36, 0.58), rgba(94, 63, 36, 0.68)),
+      url('https://images.unsplash.com/photo-1514395462725-fb4566210144?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      color: #fff8ea;
+      padding: 90px 20px;
+      text-align: center;
+      border-bottom: 8px solid #c79b5c;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1250px;
+      margin: 40px auto 80px auto;
+    }
+
+    .intro {
+      background: rgba(255, 248, 233, 0.92);
+      border: 3px solid #d7b078;
+      border-radius: 22px;
+      padding: 36px;
+      margin-bottom: 42px;
+      box-shadow: 0 10px 28px rgba(76, 55, 28, 0.12);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .intro-card {
+      background: #fffdf7;
+      border-left: 8px solid #d8a25c;
+      padding: 20px;
+      border-radius: 14px;
+    }
+
+    .intro-card h3 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #7b4b1e;
+    }
+
+    .day-card {
+      background: rgba(255,255,255,0.94);
+      border-radius: 26px;
+      overflow: hidden;
+      margin-bottom: 36px;
+      box-shadow: 0 12px 30px rgba(89, 61, 30, 0.14);
+      border: 2px solid rgba(184, 136, 75, 0.28);
+    }
+
+    .day-header {
+      background: linear-gradient(to right, #b87a39, #d6a25f);
+      color: #fff;
+      padding: 24px 30px;
+    }
+
+    .day-header h2 {
+      margin: 0;
+      font-size: 36px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .day-header p {
+      margin: 8px 0 0 0;
+      font-size: 22px;
+    }
+
+    .timeline {
+      padding: 28px;
+    }
+
+    .event {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px dashed #d5b487;
+    }
+
+    .event:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .time {
+      min-width: 170px;
+      font-weight: 700;
+      color: #8b4d14;
+      font-size: 22px;
+    }
+
+    .details {
+      flex: 1;
+    }
+
+    .details h3 {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+      color: #4a2f16;
+    }
+
+    .location {
+      margin-top: 10px;
+      color: #65452a;
+      font-size: 19px;
+    }
+
+    a.map-link {
+      display: inline-block;
+      margin-top: 14px;
+      background: #c98b42;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 18px;
+      transition: 0.25s ease;
+      font-weight: 700;
+    }
+
+    a.map-link:hover {
+      background: #9f6727;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px 70px;
+      color: #6a4d2f;
+      font-size: 18px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #f0d7af;
+      color: #7d4f1f;
+      border-radius: 999px;
+      padding: 6px 14px;
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 18px;
+      }
+
+      header h1 {
+        font-size: 42px;
+      }
+
+      .event {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .time {
+        min-width: auto;
+      }
+
+      .details h3 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Melbourne Journey 2026</h1>
+    <p>墨爾本・陽光與歷史交織的慢旅行</p>
+    <p>2026/06/06 — 2026/06/14</p>
+    <div class="badge">Senior Friendly ｜ Relaxed Pace ｜ Classic Heritage Style</div>
+  </header>
+
+  <div class="container">
+
+    <section class="intro">
+      <h2 style="font-size:40px; margin-top:0; color:#6e4215;">旅程資訊總覽</h2>
+
+      <div class="intro-grid">
+        <div class="intro-card">
+          <h3>目的地</h3>
+          <p>澳洲・墨爾本 Melbourne</p>
+        </div>
+
+        <div class="intro-card">
+          <h3>旅遊成員</h3>
+          <p>2 位約 60 歲長輩＋1 位 30 歲成人</p>
+        </div>
+
+        <div class="intro-card">
+          <h3>旅行風格</h3>
+          <p>慢步調、舒適、適合長輩</p>
+        </div>
+
+        <div class="intro-card">
+          <h3>總預算</h3>
+          <p>約 NTD 300,000</p>
+        </div>
+
+        <div class="intro-card">
+          <h3>住宿飯店</h3>
+          <p><strong>Treasury on Collins Hotel</strong><br>
+          394 Collins St, Melbourne VIC 3000</p>
+          <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Treasury+on+Collins+Hotel+Melbourne">查看 Google 地圖</a>
+        </div>
+
+        <div class="intro-card">
+          <h3>住宿天數</h3>
+          <p>共入住 7 晚</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Day 1 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 1 ｜ 06/06 Sat</h2>
+        <p>台北出發・啟程飛往墨爾本</p>
+      </div>
+
+      <div class="timeline">
+        <div class="event">
+          <div class="time">23:30</div>
+          <div class="details">
+            <h3>中華航空 CI027 飛往 Melbourne</h3>
+            <div class="location">Taoyuan International Airport Terminal 2</div>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Taoyuan+International+Airport+Terminal+2">開啟 Google 地圖</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 2 ｜ 06/07 Sun</h2>
+        <p>抵達墨爾本・輕鬆適應時差</p>
+      </div>
+
+      <div class="timeline">
+        <div class="event">
+          <div class="time">10:40</div>
+          <div class="details">
+            <h3>抵達 Melbourne Airport (MEL T2)</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.6690,144.8410">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">13:15 - 14:30</div>
+          <div class="details">
+            <h3>Shanghai Street Dumplings 午餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8124,144.9658">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">14:45 - 17:00</div>
+          <div class="details">
+            <h3>飯店 Check-in ＆ 長輩休息時間</h3>
+            <div class="location">Treasury on Collins Hotel</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 3 ｜ 06/08 Mon</h2>
+        <p>經典墨爾本文化與歷史巡禮</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event">
+          <div class="time">09:30 - 10:15</div>
+          <div class="details">
+            <h3>Flinders Street Station ＆ St Paul's Cathedral</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8183,144.9671">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">10:30 - 12:30</div>
+          <div class="details">
+            <h3>National Gallery of Victoria (NGV)</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8226,144.9689">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">13:00 - 15:00</div>
+          <div class="details">
+            <h3>The Tea Rooms 1892 英式下午茶</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8157,144.9635">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">15:30 - 16:45</div>
+          <div class="details">
+            <h3>City Circle Tram 35 懷舊觀光電車</h3>
+            <div class="location">Free Tram Zone</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">18:15</div>
+          <div class="details">
+            <h3>The Meat & Wine Co Southbank 晚餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8208,144.9619">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Day 4 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 4 ｜ 06/09 Tue</h2>
+        <p>Reverse Great Ocean Road 壯麗海岸之旅</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event">
+          <div class="time">10:30</div>
+          <div class="details">
+            <h3>12 Apostles Viewpoint</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-38.6655,143.1042">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">13:15</div>
+          <div class="details">
+            <h3>Apollo Bay 海鮮午餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-38.7561,143.6667">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">15:30</div>
+          <div class="details">
+            <h3>Kennett River 野生無尾熊觀察</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-38.6694,143.8653">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Day 5 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 5 ｜ 06/10 Wed</h2>
+        <p>Puffing Billy 蒸汽火車自然日</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event">
+          <div class="time">07:40</div>
+          <div class="details">
+            <h3>InterContinental Melbourne 集合</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8174,144.9602">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">09:00 - 12:00</div>
+          <div class="details">
+            <h3>Puffing Billy Steam Train Ride</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.9171,145.3551">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">18:00</div>
+          <div class="details">
+            <h3>Mamasita Contemporary Mexican 晚餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8136,144.9715">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Day 6 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 6 ｜ 06/11 Thu</h2>
+        <p>市場、美食與圖書館探索</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event">
+          <div class="time">08:30</div>
+          <div class="details">
+            <h3>Patricia Coffee Brewers 咖啡時光</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8152,144.9593">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">09:30 - 11:40</div>
+          <div class="details">
+            <h3>Queen Victoria Market 市集漫遊</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8076,144.9568">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">12:00 - 13:30</div>
+          <div class="details">
+            <h3>Operator 25 午餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8094,144.9587">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">14:00 - 14:45</div>
+          <div class="details">
+            <h3>State Library of Victoria 圓頂景觀</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8098,144.9652">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">18:00</div>
+          <div class="details">
+            <h3>Supernormal Contemporary Asian 晚餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8149,144.9695">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Day 7 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 7 ｜ 06/12 Fri</h2>
+        <p>城市天際線與 Lightscape 夜間燈光秀</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event">
+          <div class="time">08:30 - 10:15</div>
+          <div class="details">
+            <h3>Higher Ground 早餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8156,144.9531">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">10:45 - 12:30</div>
+          <div class="details">
+            <h3>Shrine of Remembrance 屋頂景觀</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8304,144.9734">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">12:45</div>
+          <div class="details">
+            <h3>The Observatory Cafe 午餐</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8285,144.9744">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">17:30 - 19:30</div>
+          <div class="details">
+            <h3>Lightscape 2026 沉浸式燈光展</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8285,144.9744">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Day 8 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 8 ｜ 06/13 Sat</h2>
+        <p>花園散步、世界級可頌與海鮮市集</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event">
+          <div class="time">08:30 - 09:40</div>
+          <div class="details">
+            <h3>Fitzroy Gardens Conservatory ＆ Cook's Cottage</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8133,144.9810">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">10:00 - 11:00</div>
+          <div class="details">
+            <h3>Lune Croissanterie Fitzroy</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8015,144.9795">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">11:30 - 14:00</div>
+          <div class="details">
+            <h3>South Melbourne Market 海鮮巡禮</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8324,144.9568">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">18:00</div>
+          <div class="details">
+            <h3>Crown Casino Complex ＆ 河岸夜景</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8222,144.9588">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Day 9 -->
+    <section class="day-card">
+      <div class="day-header">
+        <h2>Day 9 ｜ 06/14 Sun</h2>
+        <p>伴手禮採購與返程回台</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event">
+          <div class="time">10:15 - 12:30</div>
+          <div class="details">
+            <h3>Bourke Street Mall 購物時光</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8136,144.9650">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">13:45 - 14:45</div>
+          <div class="details">
+            <h3>Hosier Lane 塗鴉藝術散步</h3>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=-37.8163,144.9692">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">17:45</div>
+          <div class="details">
+            <h3>專車前往 Melbourne Airport</h3>
+            <div class="location">En route to MEL Airport T2</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">21:50</div>
+          <div class="details">
+            <h3>中華航空 CI058 返回台北</h3>
+            <div class="location">Melbourne Airport Terminal 2</div>
+            <a class="map-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=Melbourne+Airport+Terminal+2">開啟 Google 地圖</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Designed with Sunshine, Heritage & Relaxed Melbourne Elegance ☀️</p>
+    <p>適合長輩的舒適步調旅行設計 ｜ Google Maps 連結皆可直接開啟導航</p>
+  </footer>
+
+</body>
+</html>
