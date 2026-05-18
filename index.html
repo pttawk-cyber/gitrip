@@ -2,609 +2,745 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>墨爾本家族之旅・每日安心出遊指南</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇦🇺 墨爾本家族之旅・每日安心出遊指南</title>
     <style>
-        /* 基礎防溢出與基本重設 */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        /* 引入優雅的中文字體 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@600&display=swap');
+
+        :root {
+            --bg-color: #fdfbf7;         /* 明亮溫潤的復古奶油白 */
+            --card-bg: #ffffff;          /* 純白卡片提升明亮度 */
+            --primary-color: #1a3a5f;    /* 歷史感深海藍，高對比易讀 */
+            --secondary-color: #8c6239;  /* 古典黃銅棕 */
+            --accent-color: #e67e22;     /* 溫暖陽光橘，用於警告/重點 */
+            --text-color: #2c3e50;       /* 深色內文字體 */
+            --transport-bg: #edf2f7;     /* 交通提示淺灰藍 */
         }
-        
-        @page {
-            size: A4;
-            margin: 20mm 15mm;
-            background-color: #fbf9f4; /* 具歷史感的典雅復古奶油色 */
-            @bottom-right {
-                content: "第 " counter(page) " 頁";
-                font-family: "Microsoft JhengHei", system-ui, sans-serif;
-                font-size: 10pt;
-                color: #7a6e67;
-            }
-            @bottom-left {
-                content: "🇦🇺 墨爾本家族之旅・安心指南";
-                font-family: "Microsoft JhengHei", system-ui, sans-serif;
-                font-size: 10pt;
-                color: #7a6e67;
-            }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
-            background-color: #fbf9f4;
-            color: #2c2520; /* 深褐深灰，比純黑更具歷史感與閱讀舒適度 */
-            line-height: 1.7;
-            font-size: 12pt; /* 放大字體，適合長輩輕鬆閱讀 */
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 18px; /* 放大字體，體貼長輩視力 */
+            padding-bottom: 60px;
         }
 
-        /* 封面 / 精緻頂部橫幅 */
-        .header-banner {
-            background-color: #5c1d24; /* 典雅維多利亞深紅 */
-            color: #ffffff;
-            padding: 30px 25px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border-bottom: 4px solid #c99b62; /* 金色歷史感飾邊 */
+        /* 頁首設計 */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #0f233c);
+            color: white;
             text-align: center;
+            padding: 40px 20px;
+            border-bottom: 6px solid var(--secondary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        .header-banner h1 {
-            margin: 0;
-            font-size: 24pt;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .header-banner .subtitle {
-            margin: 10px 0 0 0;
-            font-size: 14pt;
-            color: #e5d4bc;
-            font-style: italic;
-        }
-
-        /* 隨身貼心小提醒 */
-        .reminder-box {
-            background-color: #ffffff;
-            border: 2px solid #c99b62;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
-
-        .reminder-box h3 {
-            margin-top: 0;
-            margin-bottom: 12px;
-            color: #5c1d24;
-            font-size: 15pt;
-            border-bottom: 2px solid #e5d4bc;
-            padding-bottom: 6px;
-        }
-
-        .reminder-list {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .reminder-list li {
+        header h1 {
+            font-size: 2.2rem;
             margin-bottom: 10px;
-            font-size: 12pt;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        .reminder-list li strong {
-            color: #b83b47; /* 明亮強調色 */
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
-        /* 每日行程容器 */
-        .day-section {
-            background-color: #ffffff;
-            border: 1px solid #e5d4bc;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 快速跳轉導航列 */
+        .nav-menu {
+            background-color: var(--card-bg);
+            border: 2px solid var(--secondary-color);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-btn {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 隨身貼心小提醒區塊 */
+        .tips-box {
+            background-color: #fff9e6;
+            border-left: 8px solid var(--accent-color);
             border-radius: 8px;
             padding: 25px;
-            margin-bottom: 30px;
-            page-break-inside: avoid; /* 防止單日行程被截斷中斷 */
-            box-shadow: 0 4px 8px rgba(44, 37, 32, 0.03);
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .tips-box h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-box ul {
+            list-style-type: none;
+        }
+
+        .tips-box li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .tips-box li::before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* 每日行程卡片 */
+        .day-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid #eef0f2;
+            border-top: 6px solid var(--secondary-color);
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
         }
 
         .day-header {
-            border-bottom: 3px solid #1a3644; /* 墨爾本經典復古深藍 */
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            border-bottom: 2px dashed #e2e8f0;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
 
         .day-title {
-            font-size: 17pt;
-            color: #1a3644;
-            margin: 0;
-            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* 行程時間軸表格 layout */
-        .timeline-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-
-        .timeline-table td {
-            padding: 14px 10px;
-            vertical-align: top;
-            border-bottom: 1px dashed #e5d4bc;
-        }
-
-        .timeline-table tr:last-child td {
-            border-bottom: none;
+        /* 時間軸行程項目 */
+        .timeline-item {
+            display: flex;
+            margin-bottom: 25px;
+            position: relative;
         }
 
         .time-col {
-            width: 18%;
-            font-size: 14pt;
-            font-weight: bold;
-            color: #d97706; /* 明亮溫暖的琥珀金，突出時間點 */
-            font-family: "Georgia", serif;
+            min-width: 85px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            padding-top: 2px;
         }
 
-        .content-col {
-            width: 82%;
-            font-size: 12.5pt;
+        .info-col {
+            flex: 1;
+            padding-left: 15px;
+            border-left: 3px solid #edf2f7;
         }
 
-        /* 標籤分類樣式 */
-        .badge {
+        .activity-tag {
             display: inline-block;
-            padding: 3px 10px;
-            font-size: 10.5pt;
+            font-size: 0.95rem;
             font-weight: bold;
-            color: #ffffff;
-            border-radius: 4px;
-            margin-right: 6px;
-            vertical-align: middle;
-        }
-        .badge-hotel { background-color: #4a5a6a; } /* 煙燻藍 */
-        .badge-tea { background-color: #b57c4e; }   /* 暖茶棕 */
-        .badge-spot { background-color: #3a5f43; }  /* 古典綠 */
-        .badge-food { background-color: #9e4747; }  /* 磚紅 */
-        .badge-relax { background-color: #6b5b7b; } /* 柔紫 */
-        .badge-shop { background-color: #2e5b82; }  /* 深藍 */
-
-        /* 地圖連結按鈕 */
-        .map-btn {
-            display: inline-block;
-            background-color: #f3efe6;
-            color: #1a3644;
-            text-decoration: none;
             padding: 2px 10px;
-            font-size: 10.5pt;
-            font-weight: bold;
             border-radius: 4px;
-            border: 1px solid #1a3644;
-            margin-left: 8px;
-            vertical-align: middle;
+            margin-bottom: 8px;
+        }
+        .tag-meal { background-color: #ffe6e6; color: #c0392b; }
+        .tag-sight { background-color: #e3faf2; color: #00a86b; }
+        .tag-hotel { background-color: #e8f4fd; color: #2980b9; }
+        .tag-rest { background-color: #f3e9fa; color: #8e44ad; }
+        .tag-alert { background-color: #fff0e6; color: #d35400; font-weight: bold; }
+
+        .activity-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 6px;
         }
 
-        /* 警告或重要注意字體 */
-        .alert-highlight {
-            color: #b83b47;
+        .activity-desc {
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+
+        /* 大按鈕：Google 地圖連結 */
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f0f7f4;
+            color: #2d6a4f;
+            text-decoration: none;
+            font-size: 0.95rem;
             font-weight: bold;
-            background-color: #fff5f5;
-            padding: 2px 6px;
-            border-radius: 4px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #b7e4c7;
+            margin-top: 4px;
+            margin-right: 8px;
+            transition: all 0.2s ease;
         }
 
-        /* 本日交通區塊 */
-        .transport-card {
-            background-color: #f8f6f0;
-            border-left: 5px solid #1a3644;
-            padding: 12px 18px;
-            margin-top: 15px;
-            border-radius: 0 6px 6px 0;
-            font-size: 11.5pt;
+        .map-link:hover {
+            background-color: #2d6a4f;
+            color: white;
         }
 
-        .transport-card strong {
-            color: #1a3644;
+        /* 每日交通提示區塊 */
+        .transport-box {
+            background-color: var(--transport-bg);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--primary-color);
+            border: 1px solid #cbd5e0;
+        }
+
+        .transport-icon {
+            font-size: 1.6rem;
+        }
+
+        /* 強調標籤 */
+        .highlight-text {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* 響應式手機優化 */
+        @media (max-width: 600px) {
+            body { font-size: 17px; }
+            header h1 { font-size: 1.7rem; }
+            .day-title { font-size: 1.4rem; }
+            .timeline-item { flex-direction: column; }
+            .time-col { margin-bottom: 5px; min-width: auto; }
+            .info-col { padding-left: 0; border-left: none; border-top: 2px solid #edf2f7; padding-top: 10px; }
+            .map-link { display: flex; justify-content: center; margin-bottom: 8px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 頂部精緻橫幅 -->
-    <div class="header-banner">
-        <h1>🇦🇺 墨爾本家族之旅 ☀️</h1>
-        <div class="subtitle">每日安心出遊指南・長輩專用貼心版</div>
-    </div>
+    <header>
+        <h1>🇦🇺 墨爾本家族之旅</h1>
+        <p>☀️ 每日安心出遊與溫馨指南 ☀️</p>
+    </header>
 
-    <!-- 隨身貼心小提醒 -->
-    <div class="reminder-box">
-        <h3>💡 隨身貼心小提醒（出門前看一眼）</h3>
-        <ul class="reminder-list">
-            <li>❄️ <strong>墨爾本的冬天（6月）</strong>：早晚非常冷，風大時體感溫度低。<strong>圍巾、手套、毛帽、保暖外套</strong>請天天隨身攜帶，千萬別著涼。</li>
-            <li>🚃 <strong>免費電車特區</strong>：只要在市中心（地上與車站有<strong>綠色 Free Tram Zone 標誌</strong>），我們上下電車都<strong>不用刷卡</strong>，直接走上去坐就好。如果需要刷卡的日子，我會提前幫大家準備好，請安心！</li>
-        </ul>
-    </div>
+    <div class="container">
+        
+        <!-- 快速導航選單 -->
+        <div class="nav-menu">
+            <a href="#day1" class="nav-btn">6/7 (日) D1</a>
+            <a href="#day2" class="nav-btn">6/8 (一) D2</a>
+            <a href="#day3" class="nav-btn">6/9 (二) D3</a>
+            <a href="#day4" class="nav-btn">6/10 (三) D4</a>
+            <a href="#day5" class="nav-btn">6/11 (四) D5</a>
+            <a href="#day6" class="nav-btn">6/12 (五) D6</a>
+            <a href="#day7" class="nav-btn">6/13 (六) D7</a>
+            <a href="#day8" class="nav-btn">6/14 (日) D8</a>
+        </div>
 
-    <!-- DAY 1 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/7 (日) 第一天：抵達墨爾本 ＆ 河畔散步</h2>
+        <!-- 隨身貼心小提醒 -->
+        <div class="tips-box">
+            <h2>隨身貼心小提醒</h2>
+            <ul>
+                <li><span class="highlight-text">墨爾本的冬天（6月）</span>：早晚非常冷，風大時體感溫度極低。<span class="highlight-text">圍巾、手套、毛帽、保暖外套</span>請務必天天隨身攜帶。</li>
+                <li><span class="highlight-text">免費電車區 (Free Tram Zone)</span>：只要在市中心（地上與站牌有綠色標誌的車站），我們上下電車都<span class="highlight-text">不用刷卡</span>，直接走上去坐就好。如果需要刷卡的日子，我會提前幫大家準備好卡片！</li>
+            </ul>
         </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">10:40</td>
-                <td class="content-col">✈️ 飛機平安落地，搭乘專車前往市區飯店。</td>
-            </tr>
-            <tr>
-                <td class="time-col">13:30</td>
-                <td class="content-col">
-                    <span class="badge badge-hotel">飯店入住</span>
-                    🏨 抵達飯店 <strong>Treasury on Collins</strong> 辦理入住、稍微躺著休息一下。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Treasury+on+Collins+Melbourne" target="_blank">📍 地圖導航</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">15:00</td>
-                <td class="content-col">
-                    <span class="badge badge-tea">下午茶</span>
-                    ☕️ 帶爸媽去最出名的 <strong>Degraves St 咖啡街</strong>，喝杯墨爾本道地的熱拿鐵。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Degraves+St+Melbourne" target="_blank">📍 地圖導航</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">16:30</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">美景散步</span>
-                    🏙️ 沿著美麗的亞拉河畔、<strong>南岸 (Southbank)</strong> 散步拍照。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Southbank+Melbourne" target="_blank">📍 地圖導航</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">18:00</td>
-                <td class="content-col">
-                    <span class="badge badge-food">精緻晚餐</span>
-                    🍽️ 市區精緻晚餐，放鬆第一天的飛行疲勞。
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong>全程使用免費電車 ＋ 輕鬆走路，完全不用刷卡。
-        </div>
-    </div>
 
-    <!-- DAY 2 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/8 (一) 第二天：市區經典地標 ＆ 美術館之夜</h2>
-        </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">09:30</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">經典地標</span>
-                    📸 參觀最壯麗的 <strong>Flinders 火車站</strong>、<strong>聖保羅大教堂</strong>、<strong>聯邦廣場</strong>，還有最酷的<strong>塗鴉巷 (Hosier Lane)</strong>。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Flinders+Street+Railway+Station" target="_blank">📍 景點地圖</a>
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=St+Paul%27s+Cathedral+Melbourne" target="_blank">📍 教堂地圖</a>
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Hosier+Lane+Melbourne" target="_blank">📍 塗鴉巷地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">11:45</td>
-                <td class="content-col">
-                    <span class="badge badge-food">人氣午餐</span>
-                    🍽️ 吃市區超人氣的 <strong>Operators 25</strong> 精品早午餐（班尼迪克蛋和熱鬆餅是招牌！）。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Operators+25+Melbourne" target="_blank">📍 餐廳地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">13:15</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">藝術饗宴</span>
-                    🖼️ 下午變冷時，我們躲進 <strong>NGV 國立美術館</strong> 吹暖氣。去看世界最大的彩色玻璃天花板，非常壯觀！
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=National+Gallery+of+Victoria" target="_blank">📍 美術館地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">15:30</td>
-                <td class="content-col">
-                    <span class="badge badge-tea">百年茶屋</span>
-                    🍰 逛古典的<strong>拱廊 (Block Arcade)</strong>，在百年老店 <strong>The Tea Rooms 1892</strong> 優雅品嚐現烤熱司康（Scone）配熱茶。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Block+Arcade+Melbourne" target="_blank">📍 拱廊地圖</a>
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=The+Tea+Rooms+1892+Melbourne" target="_blank">📍 茶屋地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">18:00</td>
-                <td class="content-col">
-                    <span class="badge badge-food">頂級饗宴</span>
-                    🥩 跨過亞拉河，吃名店 <strong>The Meat & Wine Co</strong> 頂級熟成牛排<span class="alert-highlight">（已訂位）</span>。吃完散步看 RISING 藝術節的點燈。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=The+Meat+%26+Wine+Co+Melbourne" target="_blank">📍 餐廳地圖</a>
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong>全程使用免費電車 ＋ 走路，不用刷卡。
-        </div>
-    </div>
+        <!-- ==================== DAY 1 ==================== -->
+        <div class="day-card" id="day1">
+            <div class="day-header">
+                <div class="day-title">📅 6/7 (日) 第一天：抵達墨爾本 ＆ 河畔散步</div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="time-col">10:40</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">✈️ 抵達</span>
+                    <div class="activity-title">飛機平安落地</div>
+                    <div class="activity-desc">辦理入境手續，搭乘預約好的舒適專車直接前往市區飯店。</div>
+                </div>
+            </div>
 
-    <!-- DAY 3 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/9 (二) 第三天：大洋路十二門徒石・世界級海景</h2>
-        </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">🚨 晨間出發</td>
-                <td class="content-col">
-                    <span class="alert-highlight">請注意導遊通知的確切集合時間</span>（通常非常早，大約 6:45 - 7:15 之間），在指定地點上車。
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">白天行程</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">世界奇景</span>
-                    🚌 <strong>【大洋路一日遊】</strong> 全程有專車接送。我們坐車吹暖氣看海，會去最著名的<strong>十二門徒石 (Twelve Apostles)</strong>。<br>
-                    <span class="alert-highlight">⚠️ 岸邊風非常大，今天一定要穿最保暖的外套、戴毛帽圍巾！</span>
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Twelve+Apostles+Victoria" target="_blank">📍 景點地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">19:15</td>
-                <td class="content-col">
-                    <span class="badge badge-relax">溫馨晚餐</span>
-                    🍽️ 專車送我們回市區。今天坐車比較累，晚上我們叫熱騰騰的外送（Ubereats）回飯店房間，洗個熱水澡、穿睡衣輕鬆吃。
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong>全程精緻觀光專車接送，舒舒服服跟著導遊走即可。
-        </div>
-    </div>
+            <div class="timeline-item">
+                <div class="time-col">13:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-hotel">🏨 入住</span>
+                    <div class="activity-title">飯店 Treasury on Collins 辦理入住</div>
+                    <div class="activity-desc">抵達這棟極具歷史感的經典建築飯店，大家可以先回房間稍微躺著休息一下、充個電。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Treasury+on+Collins+Melbourne" target="_blank" class="map-link">📍 打開飯店地圖</a>
+                </div>
+            </div>
 
-    <!-- DAY 4 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/10 (三) 第四天：蒸汽小火車 ➔ 復古咖啡日</h2>
-        </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">早上行程</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">童話火車</span>
-                    🚂 專車接送我們去搭 <strong>Puffing Billy 復古蒸汽小火車</strong>！可以把腳伸出車外（自由選擇），穿梭在森林裡，非常好玩。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway" target="_blank">📍 火車地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">14:30</td>
-                <td class="content-col">
-                    <span class="badge badge-tea">神奇咖啡</span>
-                    ☕️ 回到市區，去拍天花板掛滿椅子的神奇咖啡店 <strong>Brother Baba Budan</strong>。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Brother+Baba+Budan+Melbourne" target="_blank">📍 咖啡店地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">16:00</td>
-                <td class="content-col">
-                    <span class="badge badge-relax">飯店放鬆</span>
-                    🍷 回飯店房間休息，順便享受飯店免費招待的<strong>紅白酒暢飲時光 (Wine Down)</strong>。
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">18:00</td>
-                <td class="content-col">
-                    <span class="badge badge-food">市區晚餐</span>
-                    🍽️ 市區精緻優雅晚餐。
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong>上午郊區有專車接送；下午回到市區後活動皆搭乘免費電車。
-        </div>
-    </div>
+            <div class="timeline-item">
+                <div class="time-col">15:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">☕️ 下午茶</span>
+                    <div class="activity-title">Degraves St 咖啡街</div>
+                    <div class="activity-desc">帶爸媽去墨爾本最出名的巷弄咖啡街，優雅地喝杯道地的熱拿鐵與澳式咖啡。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Degraves+Street+Melbourne" target="_blank" class="map-link">📍 打開咖啡街地圖</a>
+                </div>
+            </div>
 
-    <!-- DAY 5 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/11 (四) 第五天：百年市集 ➔ 最美圖書館 ➔ 龍蝦堡</h2>
-        </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">09:30</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">百年市集</span>
-                    🍎 逛墨爾本最大的 <strong>Queen Victoria Market（維多利亞女皇市場）</strong>，體驗當地人的生活，吃現烤果醬甜甜圈。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Queen+Victoria+Market" target="_blank">📍 市集地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">11:45</td>
-                <td class="content-col">
-                    <span class="badge badge-food">市區午餐</span>
-                    🍽️ 市區美食探索與午餐享用。
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">13:00</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">魔法學院</span>
-                    📚 參觀世界最美、像魔法學校一樣的<strong>維多利亞州立圖書館</strong>。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=State+Library+of+Victoria" target="_blank">📍 圖書館地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">14:30</td>
-                <td class="content-col">
-                    <span class="badge badge-shop">限定購物</span>
-                    🧱 帶大家去全墨爾本唯一的<strong>樂高旗艦店</strong>，可以現場客製化列印印有墨爾本電車和自己名字的樂高人偶喔！
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=LEGO+Store+Melbourne" target="_blank">📍 樂高店地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">16:00</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">世界遺產</span>
-                    🏛️ 參觀世界遺產 <strong>皇家展覽館 ＆ 卡爾頓花園</strong> 散步拍照。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Royal+Exhibition+Building" target="_blank">📍 展覽館地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">18:00</td>
-                <td class="content-col">
-                    <span class="badge badge-food">招牌美食</span>
-                    🦞 吃名店 <strong>Supernormal</strong><span class="alert-highlight">（招牌龍蝦堡一定要吃！已訂位）</span>。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Supernormal+Melbourne" target="_blank">📍 餐廳地圖</a>
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong>市區大範圍移動，全程使用方便的免費電車 ＋ 散步。
-        </div>
-    </div>
+            <div class="timeline-item">
+                <div class="time-col">16:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🏙️ 散步</span>
+                    <div class="activity-title">亞拉河畔與南岸 (Southbank)</div>
+                    <div class="activity-desc">沿著美麗的亞拉河畔散步，欣賞市區高樓與河景，這裡拍照角度最漂亮！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Southbank+Melbourne" target="_blank" class="map-link">📍 打開亞拉河畔地圖</a>
+                </div>
+            </div>
 
-    <!-- DAY 6 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/12 (五) 第六天：皇家植物園 ➔ 奇幻魔幻燈光秀</h2>
-        </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">10:00</td>
-                <td class="content-col">
-                    <span class="badge badge-food">百年穀倉</span>
-                    🍽️ 吃由百年穀倉改建的超大氣老字號 <strong>Higher Ground</strong> 精緻早午餐。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Higher+Ground+Melbourne" target="_blank">📍 餐廳地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">13:30</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">壯麗俯瞰</span>
-                    📸 亞拉河畔喝個下午茶，接著去參觀無敵壯麗的 <strong>戰爭紀念館 (Shrine of Remembrance)</strong>，爬到頂樓可以俯瞰整個墨爾本市景。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Shrine+of+Remembrance" target="_blank">📍 紀念館地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">17:30</td>
-                <td class="content-col">
-                    <span class="badge badge-food">玻璃屋晚餐</span>
-                    🍽️ 在皇家植物園內的 <strong>The Observatory 玻璃屋</strong> 享用晚餐套票<span class="alert-highlight">（已訂位）</span>。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Royal+Botanic+Gardens+Victoria" target="_blank">📍 植物園地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">19:00</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">年度重頭戲</span>
-                    ✨ 進入皇家植物園，欣賞冬季限定的 <strong>Lightscape 燈光秀</strong>！在森林裡漫步看發光的隧道。<br>
-                    <span class="alert-highlight">⚠️ 戶外夜間非常冷，務必穿足最厚保暖衣物與手套！</span>
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong><span class="alert-highlight">下午出發後需要刷交通卡 (myki)</span>。上下電車請記得都要逼一聲喔！
-        </div>
-    </div>
+            <div class="timeline-item">
+                <div class="time-col">18:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 晚餐</span>
+                    <div class="activity-title">市區精緻晚餐</div>
+                    <div class="activity-desc">享用美味的第一餐晚宴，洗去搭飛機的疲勞。</div>
+                </div>
+            </div>
 
-    <!-- DAY 7 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/13 (六) 第七天：文青費茲羅伊 ➔ 神級可頌 ➔ 賭場火球秀</h2>
+            <div class="transport-box">
+                <span class="transport-icon">🎒</span>
+                <div><strong>本日交通：</strong> 全程利用「免費電車區」 ＋ 輕鬆走路，完全不用刷交通卡。</div>
+            </div>
         </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">08:30</td>
-                <td class="content-col">
-                    <span class="badge badge-food">世界第一</span>
-                    🥐 衝去 Fitzroy 總店吃被譽為世界第一名的 <strong>Lune 神級可頌</strong>！
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Lune+Croissanterie+Fitzroy" target="_blank">📍 可頌店地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">10:00</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">藝文市集</span>
-                    🎨 逛墨爾本最文青的 <strong>Rose St 藝文市集</strong>，欣賞當地藝術家的手作小物，順便逛逛附近的設計師雜貨店與古董市場。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Rose+St.+Artists+Market" target="_blank">📍 市集地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">12:30</td>
-                <td class="content-col">
-                    <span class="badge badge-food">網紅午餐</span>
-                    🍽️ 在費茲羅伊區的網紅名店 <strong>Gabriel</strong> 享用悠閒美味午餐。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Gabriel+Melbourne" target="_blank">📍 餐廳地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">14:00</td>
-                <td class="content-col">
-                    <span class="badge badge-shop">血拼購物</span>
-                    🛍️ 回到市區，前往超大、超好逛的 <strong>DFO South Wharf 奧特萊斯</strong> 買打折衣服包包。全室內有暖氣，逛起來很舒服。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=DFO+South+Wharf" target="_blank">📍 DFO地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">16:00</td>
-                <td class="content-col">
-                    <span class="badge badge-relax">微醺時光</span>
-                    🏨 回飯店房間溫馨休息、喝免費紅白酒享用飯店 (Wine Down) 福利。
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">18:00</td>
-                <td class="content-col">
-                    <span class="badge badge-food">市區晚餐</span>
-                    🍽️ 市區精緻晚餐。
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">20:00</td>
-                <td class="content-col">
-                    <span class="badge badge-spot">震撼視覺</span>
-                    🔥 散步到 <strong>Crown Casino（皇冠賭場）門口</strong>，看晚上整點震撼的<strong>巨大戶外噴火秀</strong>！
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Crown+Melbourne" target="_blank">📍 賭場地圖</a>
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong><span class="alert-highlight">早上往返文青區非免費區，需要刷交通卡 (myki)</span>；下午回到市區購物和看火球秀則是全程免費電車。
-        </div>
-    </div>
 
-    <!-- DAY 8 -->
-    <div class="day-section">
-        <div class="day-header">
-            <h2 class="day-title">📅 6/14 (日) 第八天：唐人街飲茶 ➔ 藥妝伴手禮大採購 ✈️</h2>
+        <!-- ==================== DAY 2 ==================== -->
+        <div class="day-card" id="day2">
+            <div class="day-header">
+                <div class="day-title">📅 6/8 (一) 第二天：市區經典地標 ＆ 美術館之夜</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">09:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">📸 景點</span>
+                    <div class="activity-title">市區歷史地標打卡之旅</div>
+                    <div class="activity-desc">參觀極具英倫壯麗風情的 Flinders 火車站、聖保羅大教堂、聯邦廣場，並前往最酷的塗鴉巷拍照。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Flinders+Street+Station" target="_blank" class="map-link">📍 弗林德斯火車站</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=St+Paul's+Cathedral+Melbourne" target="_blank" class="map-link">📍 聖保羅大教堂</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Hosier+Lane+Melbourne" target="_blank" class="map-link">📍 塗鴉巷 (Hosier Lane)</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">11:45</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 午餐</span>
+                    <div class="activity-title">Operators 25 精品早午餐</div>
+                    <div class="activity-desc">造訪由歷史老建築改建的超人氣墨爾本早午餐，招牌的班尼迪克蛋和熱鬆餅絕對不能錯過！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Operators+25+Melbourne" target="_blank" class="map-link">📍 Operators 25 地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">13:15</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🖼️ 景點</span>
+                    <div class="activity-title">NGV 維多利亞國立美術館</div>
+                    <div class="activity-desc">下午氣溫變冷時，我們躲進美術館吹溫暖的暖氣。一起躺在地上欣賞世界最大的彩色玻璃天花板，非常壯觀震撼！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=National+Gallery+of+Victoria" target="_blank" class="map-link">📍 NGV 美術館地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">15:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍰 下午茶</span>
+                    <div class="activity-title">百年老店 The Tea Rooms 優雅茶時光</div>
+                    <div class="activity-desc">漫步於古典華麗的「拱廊 (Block Arcade)」，在百年歷史名店品嚐現烤的熱司康（Scone）搭配香氣濃郁的英國熱茶。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Block+Arcade+Melbourne" target="_blank" class="map-link">📍 布洛克拱廊</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Tea+Rooms+1892+Melbourne" target="_blank" class="map-link">📍 百年茶室 1892</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">18:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🥩 晚餐</span>
+                    <div class="activity-title">The Meat & Wine Co 頂級熟成牛排</div>
+                    <div class="activity-desc">跨過亞拉河，享用享譽墨爾本的頂級牛排饗宴（已訂位）。吃飽後可在河畔散步，順道欣賞冬季限定的 RISING 藝術節唯美點燈。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Meat+%26+Wine+Co+Melbourne" target="_blank" class="map-link">📍 頂級牛排館地圖</a>
+                </div>
+            </div>
+
+            <div class="transport-box">
+                <span class="transport-icon">🎒</span>
+                <div><strong>本日交通：</strong> 全程利用「免費電車區」 ＋ 散步，不需要刷卡，輕鬆無負擔。</div>
+            </div>
         </div>
-        <table class="timeline-table">
-            <tr>
-                <td class="time-col">11:30</td>
-                <td class="content-col">
-                    <span class="badge badge-food">港式飲茶</span>
-                    🥢 帶爸媽去<strong>唐人街（Chinatown）</strong>吃熱騰騰的港式飲茶，解鎖、溫暖亞洲胃。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Chinatown+Melbourne" target="_blank">📍 唐人街地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">14:00</td>
-                <td class="content-col">
-                    <span class="badge badge-shop">採買伴手禮</span>
-                    💊 去最大間的 <strong>Chemist Warehouse 藥妝店</strong>，把木瓜霜、維他命、當地綿羊油等伴手禮一次買齊！買完回飯店拿行李。
-                    <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Chemist+Warehouse+Melbourne" target="_blank">📍 藥妝店地圖</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="time-col">19:00</td>
-                <td class="content-col">
-                    <span class="badge badge-hotel">舒適返航</span>
-                    🚌 舒適專車來到飯店門口接送我們，輕鬆前往機場，搭機返台，結束完美的墨爾本之旅！
-                </td>
-            </tr>
-        </table>
-        <div class="transport-card">
-            🎒 <strong>本日交通簡介：</strong>市區活動全部免刷卡，去機場時搭乘已預約好的舒適專車。
+
+        <!-- ==================== DAY 3 ==================== -->
+        <div class="day-card" id="day3">
+            <div class="day-header">
+                <div class="day-title">📅 6/9 (二) 第三天：大洋路十二門徒石・世界級海景</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col tag-alert">🚨 早上</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-alert">⚠️ 注意</span>
+                    <div class="activity-title">提早出發提醒</div>
+                    <div class="activity-desc"><span class="highlight-text">請特別留意導遊通知的確切集合時間</span>（通常非常早，大約在 6:45 - 7:15 之間），請在指定地點準時上車。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">白天</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🚌 一日遊</span>
+                    <div class="activity-title">大洋路 (Great Ocean Road) 壯麗之旅</div>
+                    <div class="activity-desc">全程有專車接送。我們舒舒服服坐在車裡吹著暖氣欣賞窗外舉世聞名的海岸線，並下車觀賞大自然鬼斧神工的<strong>十二門徒石</strong>。海邊風非常大，<span class="highlight-text">今天請務必穿上最保暖的外套、戴好毛帽與圍巾！</span></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Twelve+Apostles+Victoria" target="_blank" class="map-link">📍 十二門徒石地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">19:15</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-rest">🍽️ 晚餐</span>
+                    <div class="activity-title">回飯店輕鬆享用熱騰騰晚餐</div>
+                    <div class="activity-desc">專車會送我們回到市區。因為今天車程較長，體力消耗較多，晚上特別貼心安排叫外送（UberEats）到飯店房間，大家可以洗個舒服的熱水澡、換上睡衣放鬆享用晚餐。</div>
+                </div>
+            </div>
+
+            <div class="transport-box">
+                <span class="transport-icon">🎒</span>
+                <div><strong>本日交通：</strong> 全程專車接送旅遊巴士，跟著導遊走即可，不需動腦與走路。</div>
+            </div>
         </div>
+
+        <!-- ==================== DAY 4 ==================== -->
+        <div class="day-card" id="day4">
+            <div class="day-header">
+                <div class="day-title">📅 6/10 (三) 第四天：蒸汽小火車 ➔ 復古咖啡日</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">上午</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🚂 景點</span>
+                    <div class="activity-title">Puffing Billy 復古蒸汽小火車</div>
+                    <div class="activity-desc">搭乘專車前往山區，乘坐澳洲歷史最悠久的蒸汽火車！可以自由選擇把腳伸出車窗外，開心地穿梭在翠綠的森林芬多精之中，非常好玩且新鮮！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Puffing+Billy+Railway" target="_blank" class="map-link">📍 蒸汽小火車車站</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">14:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">☕️ 下午茶</span>
+                    <div class="activity-title">Brother Baba Budan 特色咖啡廳</div>
+                    <div class="activity-desc">回到市區後，拜訪天花板掛滿神奇椅子的獨特文青咖啡店，拍照效果十足，咖啡也極具水準！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Brother+Baba+Budan+Melbourne" target="_blank" class="map-link">📍 椅子咖啡廳地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">16:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-rest">🍷 放鬆</span>
+                    <div class="activity-title">回飯店享用免費微醺時光</div>
+                    <div class="activity-desc">先回房間休息放鬆，順便享受飯店貼心免費招待的<strong>紅白酒暢飲美好時光 (Wine Down)</strong>。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">18:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 晚餐</span>
+                    <div class="activity-title">市區精緻晚餐</div>
+                    <div class="activity-desc">在市區挑选暖胃又精緻的餐廳享用晚餐。</div>
+                </div>
+            </div>
+
+            <div class="transport-box">
+                <span class="transport-icon">🎒</span>
+                <div><strong>本日交通：</strong> 上半天由專車全程接送，下午在市區活動則搭乘便利的免費電車。</div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 5 ==================== -->
+        <div class="day-card" id="day5">
+            <div class="day-header">
+                <div class="day-title">📅 6/11 (四) 第五天：百年市集 ➔ 最美圖書館 ➔ 龍蝦堡</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">09:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🍎 市集</span>
+                    <div class="activity-title">維多利亞女皇市場 (Queen Victoria Market)</div>
+                    <div class="activity-desc">造訪墨爾本最大的百年歷史古蹟市集，深入體驗當地人蓬勃的生活氣息。現場一定要品嚐經典的現烤果醬甜甜圈，並外帶一杯號稱墨爾本第一名的 Patricia coffee brewers。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Queen+Victoria+Market" target="_blank" class="map-link">📍 女皇市場地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Patricia+Coffee+Brewers" target="_blank" class="map-link">📍 Patricia 咖啡地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">11:45</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 午餐</span>
+                    <div class="activity-title">市區美食探索</div>
+                    <div class="activity-desc">就近在市區品嚐各式異國豐富美食。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">13:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">📚 景點</span>
+                    <div class="activity-title">維多利亞州立圖書館</div>
+                    <div class="activity-desc">參觀被譽為全世界最美麗的圖書館之一，八角形的圓頂結構就像置身哈利波特的魔法學校，令人屏息！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=State+Library+Victoria" target="_blank" class="map-link">📍 州立圖書館地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">14:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🧱 購物</span>
+                    <div class="activity-title">樂高旗艦店 (LEGO Store) 限定購物</div>
+                    <div class="activity-desc">帶大家去全墨爾本唯一的樂高旗艦店，這裡能現場客製化列印印有「墨爾本路面電車」以及「您自己名字」的專屬樂高小人偶，當作紀念品超棒！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=LEGO+Certified+Store+Melbourne+Central" target="_blank" class="map-link">📍 樂高旗艦店地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">16:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🏛️ 景點</span>
+                    <div class="activity-title">皇家展覽館 ＆ 卡爾頓花園</div>
+                    <div class="activity-desc">漫步於列入世界文化遺產的宏偉歷史建築群與優雅花園，拍照留念。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Royal+Exhibition+Building" target="_blank" class="map-link">📍 皇家展覽館地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">18:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🦞 晚餐</span>
+                    <div class="activity-title">Supernormal 名店亞洲當代料理</div>
+                    <div class="activity-desc">知名排隊名店（已訂位），鮮美多汁、驚為天人的招牌龍蝦堡是此生的必吃美味！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Supernormal+Melbourne" target="_blank" class="map-link">📍 Supernormal 地圖</a>
+                </div>
+            </div>
+
+            <div class="transport-box">
+                <span class="transport-icon">🎒</span>
+                <div><strong>本日交通：</strong> 全程皆在「免費電車區」內活動搭配步行，不需刷卡。</div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 6 ==================== -->
+        <div class="day-card" id="day6">
+            <div class="day-header">
+                <div class="day-title">📅 6/12 (五) 第六天：皇家植物園 ➔ 奇幻魔幻燈光秀</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">10:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 早午餐</span>
+                    <div class="activity-title">Higher Ground 殿堂級早午餐</div>
+                    <div class="activity-desc">由百年古老發電廠與穀倉改建，挑高大氣、陽光灑落的超美環境，在這裡優雅享受高質感精緻早午餐。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Higher+Ground+Melbourne" target="_blank" class="map-link">📍 Higher Ground 地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">13:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">📸 景點</span>
+                    <div class="activity-title">亞拉河畔午茶 ＆ 戰爭紀念館 (Shrine of Remembrance)</div>
+                    <div class="activity-desc">先在亞拉河畔悠閒喝杯茶，接著參觀雄偉肅穆的希臘古典風戰爭紀念館，建議一同爬到頂樓，可以360度俯瞰整個墨爾本美麗的城市天際線。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Shrine+of+Remembrance" target="_blank" class="map-link">📍 戰爭紀念館地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">17:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 晚餐</span>
+                    <div class="activity-title">The Observatory 玻璃屋晚宴</div>
+                    <div class="activity-desc">特別預訂皇家植物園內夢幻的玻璃屋餐廳（已訂位），在被綠意與歷史氛圍包圍的環境中享用精緻的晚餐套票。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Observatory+Cafe+Melbourne" target="_blank" class="map-link">📍 玻璃屋餐廳地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">19:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">✨ 重頭戲</span>
+                    <div class="activity-title">Lightscape 冬季限定夢幻燈光秀</div>
+                    <div class="activity-desc">進入墨爾本皇家植物園，欣賞大受好評的冬季大型光影盛宴！在神祕的森林裡漫步，穿越由萬盞微光交織而成的發光璀璨隧道。<span class="highlight-text">冬夜戶外非常寒冷，請務必把最保暖的外套穿足！</span></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Royal+Botanic+Gardens+Victoria" target="_blank" class="map-link">📍 皇家植物園地圖</a>
+                </div>
+            </div>
+
+            <div class="transport-box" style="border-left: 6px solid #3182ce; background-color: #ebf8ff;">
+                <span class="transport-icon">💳</span>
+                <div><strong>本日交通注意：</strong> <span class="highlight-text">因下午目的地超出免費範圍，出發後需要使用交通卡 (myki)</span>。上下電車都請記得逼一聲刷卡喔！</div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 7 ==================== -->
+        <div class="day-card" id="day7">
+            <div class="day-header">
+                <div class="day-title">📅 6/13 (六) 第七天：文青區 Fitzroy ➔ 世界級可頌 ➔ 賭場火球秀</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">10:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🎨 市集</span>
+                    <div class="activity-title">Rose St 藝文市集 ＆ Lune 神級可頌</div>
+                    <div class="activity-desc">探訪充滿歷史紅磚與塗鴉的藝術文青區，逛逛精緻的手作小物、設計師雜貨與古董市場。🥐中途特別朝聖 Fitzroy 總店，品嚐<span class="highlight-text">被紐約時報譽為「世界第一名」的 Lune 經典神級可頌！</span></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Rose+St.+Artists'+Market" target="_blank" class="map-link">📍 藝文市集地圖</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Lune+Croissanterie+Fitzroy" target="_blank" class="map-link">📍 Lune 可頌總店地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">12:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 午餐</span>
+                    <div class="activity-title">Gabriel 網紅時髦餐酒館</div>
+                    <div class="activity-desc">在文青區當地深具情調的口碑網紅名店，享用一頓悠閒且放鬆的午餐時光。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Gabriel+Fitzroy" target="_blank" class="map-link">📍 Gabriel 餐廳地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">14:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🛍️ 購物</span>
+                    <div class="activity-title">DFO South Wharf 奧特萊斯大採購</div>
+                    <div class="activity-desc">回到岸邊前往規模超大、超級好逛的 DFO Outlet 折扣商場。全室內設計皆有舒適暖氣，長輩逛起來完全不累，可以輕鬆挑選打折衣服、包包與伴手禮。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=DFO+South+Wharf" target="_blank" class="map-link">📍 DFO 商場地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">16:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-rest">🏨 休息</span>
+                    <div class="activity-title">飯店中場休息與品酒</div>
+                    <div class="activity-desc">返回飯店房間放戰利品並稍作歇息，一同享用飯店招待的下午紅白酒時光 (Wine Down)。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">18:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🍽️ 晚餐</span>
+                    <div class="activity-title">市區精緻晚餐</div>
+                    <div class="activity-desc">在市區挑選舒適的餐廳，享受在墨爾本的最後一晚豐盛晚餐。</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">20:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">🔥 景點</span>
+                    <div class="activity-title">Crown Casino（皇冠賭場）震撼噴火秀</div>
+                    <div class="activity-desc">漫步至皇家賭場門口的亞拉河畔，共同觀賞晚間整點爆發、極具視覺震撼的巨大戶外噴火球特技秀，為旅程寫下熱烈回憶！</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Crown+Melbourne" target="_blank" class="map-link">📍 皇冠賭場門口位置</a>
+                </div>
+            </div>
+
+            <div class="transport-box" style="border-left: 6px solid #3182ce; background-color: #ebf8ff;">
+                <span class="transport-icon">💳</span>
+                <div><strong>本日交通注意：</strong> <span class="highlight-text">早上前往北方文青區需要刷交通卡 (myki)</span>；下午回到市區購物和去看火球秀時，則全部属于免費電車範圍。</div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 8 ==================== -->
+        <div class="day-card" id="day8">
+            <div class="day-header">
+                <div class="day-title">📅 6/14 (日) 第八天：唐人街飲茶 ➔ 藥妝伴手禮大採購 ✈️</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">11:30</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-meal">🥢 午餐</span>
+                    <div class="activity-title">唐人街 (Chinatown) 港式飲茶</div>
+                    <div class="activity-desc">帶爸媽來到充滿歷史典故的唐人街，享用熱騰騰、現點現蒸的美味港式點心，完美解鎖亞洲胃，吃得暖心又習慣。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Melbourne+Chinatown" target="_blank" class="map-link">📍 唐人街地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">14:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-sight">💊 伴手禮</span>
+                    <div class="activity-title">Chemist Warehouse 藥妝旗艦店補貨</div>
+                    <div class="activity-desc">前往全墨爾本最大間、品項最齊全的知名平價藥妝店，將澳洲特產木瓜霜、維他命、頂級羊毛脂、綿羊油等親友伴手禮一次買齊！買完後一同回飯店拿行李。</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Chemist+Warehouse+Melbourne" target="_blank" class="map-link">📍 藥妝店地圖</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="time-col">19:00</div>
+                <div class="info-col">
+                    <span class="activity-tag tag-hotel">🚌 返程</span>
+                    <div class="activity-title">專車接送至機場</div>
+                    <div class="activity-desc">寬敞尊榮的專車已準時停靠在飯店門口迎接我們。大家舒適上車休息，前往墨爾本國際機場辦理登機，平安返台。</div>
+                </div>
+            </div>
+
+            <div class="transport-box">
+                <span class="transport-icon">🎒</span>
+                <div><strong>本日交通：</strong> 白天市區活動完全不需刷卡（皆在免費區內），晚間去機場由專車接送。</div>
+            </div>
+        </div>
+
     </div>
 
 </body>
